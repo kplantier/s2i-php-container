@@ -67,7 +67,7 @@ RUN	yum install -y \
 # Install Apache httpd and PHP
 RUN rpm -Uvh https://www.softwarecollections.org/repos/rhscl/rh-php56/epel-7-x86_64/noarch/rhscl-rh-php56-epel-7-x86_64-1-2.noarch.rpm && \
     yum install -y centos-release-scl && \
-    INSTALL_PKGS="rh-php56 rh-php56-php rh-php56-php-mysqlnd rh-php56-php-pgsql rh-php56-php-bcmath \
+    INSTALL_PKGS="rh-php56 rh-php56-php rh-php56-php-mysqlnd rh-php56-php-mysql rh-php56-php-bcmath \
                   rh-php56-php-gd rh-php56-php-intl rh-php56-php-ldap rh-php56-php-mbstring rh-php56-php-pdo \
                   rh-php56-php-pecl-memcache rh-php56-php-process rh-php56-php-soap rh-php56-php-opcache rh-php56-php-xml \
                   rh-php56-php-pecl-xdebug rh-php56-php-gmp httpd24-mod_ssl" && \
