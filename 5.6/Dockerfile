@@ -61,13 +61,12 @@ RUN	yum install -y \
 		| awk '/"path_info": / { pi=$2; }; /"preferred":/ { pref=$2; }; END { print pref " " pi; };' \
 		| sed -r -e 's/^"//; s/",$//; s/" "//') \
 	&& echo "Nearest mirror: $NEAREST_TIKA_SERVER_URL" \
-	&& curl -sSL "$NEAREST_TIKA_SERVER_URL" -o /tika-server-${TIKA_VERSION}.jar \
-	&& yum clean all -y && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+	&& curl -sSL "$NEAREST_TIKA_SERVER_URL" -o /tika-server-${TIKA_VERSION}.jar 
 
 # Install Apache httpd and PHP
 RUN rpm -Uvh https://www.softwarecollections.org/repos/rhscl/rh-php56/epel-7-x86_64/noarch/rhscl-rh-php56-epel-7-x86_64-1-2.noarch.rpm && \
     yum install -y centos-release-scl && \
-    INSTALL_PKGS="rh-php56 rh-php56-php rh-php56-php-mysqlnd rh-php56-php-mysql rh-php56-php-bcmath \
+    INSTALL_PKGS="rh-php56 rh-php56-php rh-php56-php-mysqlnd rh-php56-php-mysqlnd rh-php56-php-bcmath \
                   rh-php56-php-gd rh-php56-php-intl rh-php56-php-ldap rh-php56-php-mbstring rh-php56-php-pdo \
                   rh-php56-php-pecl-memcache rh-php56-php-process rh-php56-php-soap rh-php56-php-opcache rh-php56-php-xml \
                   rh-php56-php-pecl-xdebug rh-php56-php-gmp httpd24-mod_ssl" && \
